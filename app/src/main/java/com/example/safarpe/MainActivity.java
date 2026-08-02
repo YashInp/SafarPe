@@ -1,5 +1,8 @@
 package com.example.safarpe;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -7,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+  Button btnRider,btnPartner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +22,19 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        btnPartner = findViewById(R.id.btnPartner);
+        btnRider = findViewById(R.id.btnRider);
 
-
+        btnRider.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            intent.putExtra("role","Rider");
+            startActivity(intent);
+        });
+        btnPartner.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            intent.putExtra("role","Partner");
+            startActivity(intent);
+        });
+        }
     }
 }
