@@ -2,6 +2,7 @@ package com.example.safarpe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import com.example.safarpe.LoginActivity;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,15 +27,15 @@ public class MainActivity extends AppCompatActivity {
         btnRider = findViewById(R.id.btnRider);
 
         btnRider.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             intent.putExtra("role","Rider");
             startActivity(intent);
         });
         btnPartner.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             intent.putExtra("role","Partner");
             startActivity(intent);
         });
         }
     }
-}
+
