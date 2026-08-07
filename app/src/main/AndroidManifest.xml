@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafarPe">
         <activity
+            android:name=".PartnerDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RiderDashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
