@@ -41,8 +41,20 @@ TextView Signup,ForgotPassword;
                 username.setError("Enter Username");
                 passwordField.setError("Enter Password");
             } else {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                // Get role passed from role selection screen MA
+                String role = getIntent().getStringExtra("role");
+
+                if ("Rider".equals(role)) {
+                    Intent intent = new Intent(LoginActivity.this, RiderDashboardActivity.class);
+                    startActivity(intent);
+                } else if ("Partner".equals(role)) {
+                    Intent intent = new Intent(LoginActivity.this, PartnerDashboardActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                finish();
             }
         });
 
