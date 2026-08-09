@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafarPe">
         <activity
+            android:name=".ViewBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostRouteActivity"
+            android:exported="false" />
+        <activity
             android:name=".PartnerDashboardActivity"
             android:exported="false" />
         <activity
@@ -22,10 +28,10 @@
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
-            android:exported="false" /> <!-- Login Activity -->
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" /> <!-- Splash Screen Activity -->
+            android:exported="false" />
         <activity
             android:name=".logoSplashScreen"
             android:exported="true">

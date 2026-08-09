@@ -31,7 +31,7 @@ Button btnPostRide,btnViewBooking;
         });
 
         btnViewBooking.setOnClickListener(v -> {
-            Intent intent = new Intent(RiderDashboardActivity.this, BookingActivity.class);
+            Intent intent = new Intent(RiderDashboardActivity.this, ViewBookingActivity.class);
             startActivity(intent);
         });
 
