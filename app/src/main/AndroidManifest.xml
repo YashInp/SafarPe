@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafarPe">
         <activity
+            android:name=".BookingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewBookingActivity"
             android:exported="false" />
         <activity
