@@ -30,6 +30,8 @@ EditText Origin,Destination,Fare;
         Destination = findViewById(R.id.Destination);
         Fare = findViewById(R.id.Fare);
 
+        DatabaseHelper dbHelper = new DatabaseHelper(PostRouteActivity.this);
+
         btnPostRoute.setOnClickListener(v -> {
             String origin = Origin.getText().toString().trim();
             String destination = Destination.getText().toString().trim();
@@ -38,8 +40,12 @@ EditText Origin,Destination,Fare;
             if (origin.isEmpty() || destination.isEmpty() || fare.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this,
-                        "Route posted: " + origin + " -> " + destination + " " + fare + "rs", Toast.LENGTH_SHORT).show();
+                boolean inserted = dbHelper.insertRoute(origin,destination,fare);
+                if(inserted){
+                    Toast.makeText(this, "Route Saved successfully!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "Failed to save route", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
