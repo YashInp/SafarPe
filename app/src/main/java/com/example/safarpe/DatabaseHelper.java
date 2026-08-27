@@ -29,11 +29,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_DESTINATION + " TEXT, " +
                 COL_FARE + " TEXT)";
         db.execSQL(createRouteTable);
+
+        String createBookingTable = "CREATE TABLE" + TABLE_BOOKING + "(" +
+                COL_BOOKING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COL_BOOKING_ORIGIN + " TEXT," +
+                COL_BOOKING_DESTINATION + " TEXT," +
+                COL_BOOKING_FARE + " TEXT)";
+        db.execSQL(createBookingTable);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROUTE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOKING);
         onCreate(db);
     }
 
@@ -52,5 +61,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllRoutes() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_ROUTE, null);
+    }
+
+    //booking table / insert method
+    public static final String TABLE_BOOKING = "bookings";
+    public static final String COL_BOOKING_ID = "id";
+    public static final String COL_BOOKING_ORIGIN = "origin";
+    public static final String COL_BOOKING_DESTINATION = "destination";
+    public static final String COL_BOOKING_FARE = "fare";
+
+    public boolean insertBooking(String origin, String destination, String fare) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_BOOKING_ORIGIN, origin);
+        values.put(COL_BOOKING_DESTINATION, destination);
+        values.put(COL_BOOKING_FARE, fare);
+        long result = db.insert(TABLE_BOOKING, null, values);
+        return result != -1;
+    }
+    public Cursor getAllBookings() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_BOOKING, null);
     }
 }
