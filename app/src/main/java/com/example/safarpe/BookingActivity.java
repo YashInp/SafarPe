@@ -1,5 +1,6 @@
 package com.example.safarpe;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -18,7 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class BookingActivity extends AppCompatActivity {
-Button btnBookRide;
+Button btnBookRide , btnViewBookings;
 EditText Pickup,Drop;
 ListView listRoutes;
 DatabaseHelper dbHelper;
@@ -36,6 +37,7 @@ DatabaseHelper dbHelper;
         Pickup = findViewById(R.id.Pickup);
         Drop = findViewById(R.id.Drop);
         btnBookRide = findViewById(R.id.btnBookRide);
+        btnViewBookings = findViewById(R.id.btViewBookings);
         listRoutes = findViewById(R.id.listRoutes);
 
         dbHelper = new DatabaseHelper(BookingActivity.this);
@@ -75,6 +77,10 @@ DatabaseHelper dbHelper;
                          });
                 }
             }
+        });
+        btnViewBookings.setOnClickListener(v -> {
+            Intent intent = new Intent(BookingActivity.this, ViewBookingActivity.class);
+            startActivity(intent);
         });
     }
 }
